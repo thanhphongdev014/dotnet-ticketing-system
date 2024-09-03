@@ -4,18 +4,13 @@ namespace TicketingSystem.Domain.Entities;
 
 public abstract class AggregateRoot : Entity, IHasConcurrencyStamp
 {
-    private List<IDomainEvent> _localEvents = new List<IDomainEvent>();
-    private List<IDomainEvent> _distributedEvents = new List<IDomainEvent>();
+    private readonly List<IDomainEvent> _localEvents = new List<IDomainEvent>();
+    private readonly List<IDomainEvent> _distributedEvents = new List<IDomainEvent>();
 
     public IReadOnlyCollection<IDomainEvent> LocalEvents => _localEvents.AsReadOnly();
     public IReadOnlyCollection<IDomainEvent> DistributedEvents => _distributedEvents.AsReadOnly();
 
-    public string ConcurrencyStamp { get; set; }
-
-    public AggregateRoot()
-    {
-        ConcurrencyStamp = Guid.NewGuid().ToString("N");
-    }
+    public string ConcurrencyStamp { get; set; } = Guid.NewGuid().ToString("N");
 
     public virtual void ClearLocalEvents()
     {
@@ -40,8 +35,8 @@ public abstract class AggregateRoot : Entity, IHasConcurrencyStamp
 
 public abstract class AggregateRoot<TKey> : Entity<TKey>, IHasConcurrencyStamp
 {
-    private List<IDomainEvent> _localEvents = new List<IDomainEvent>();
-    private List<IDomainEvent> _distributedEvents = new List<IDomainEvent>();
+    private readonly List<IDomainEvent> _localEvents = new List<IDomainEvent>();
+    private readonly List<IDomainEvent> _distributedEvents = new List<IDomainEvent>();
 
     public IReadOnlyCollection<IDomainEvent> LocalEvents => _localEvents.AsReadOnly();
     public IReadOnlyCollection<IDomainEvent> DistributedEvents => _distributedEvents.AsReadOnly();
@@ -53,7 +48,7 @@ public abstract class AggregateRoot<TKey> : Entity<TKey>, IHasConcurrencyStamp
         ConcurrencyStamp = Guid.NewGuid().ToString("N");
     }
 
-    public AggregateRoot(TKey id) : base(id)
+    protected AggregateRoot(TKey id) : base(id)
     {
         ConcurrencyStamp = Guid.NewGuid().ToString("N");
     }

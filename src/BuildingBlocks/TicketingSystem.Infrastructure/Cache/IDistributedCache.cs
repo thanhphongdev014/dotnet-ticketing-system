@@ -16,7 +16,7 @@ public interface IDistributedCache<TCacheItem>
     );
 
     Task SetAsync(
-        [NotNull] string key,
+        string key,
         [NotNull] TCacheItem value,
         DistributedCacheEntryOptions? options = null,
         CancellationToken token = default

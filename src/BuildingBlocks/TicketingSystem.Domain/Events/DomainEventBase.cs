@@ -2,10 +2,5 @@
 
 public class DomainEventBase : IDomainEvent
 {
-    public DomainEventBase()
-    {
-        this.OccurredOn = DateTime.Now;
-    }
-
-    public DateTimeOffset OccurredOn { get; }
+    public DateTimeOffset OccurredOn { get; } = DateTime.Now;
 }

@@ -9,7 +9,7 @@ namespace TicketingSystem.Infrastructure.Cache;
 public class RedisDistributedCache<TCacheItem>(IDistributedCache distributedCache)
     : IDistributedCache<TCacheItem> where TCacheItem : class
 {
-    private DistributedCacheEntryOptions _defaultOption = new();
+    private readonly DistributedCacheEntryOptions _defaultOption = new();
 
     public async Task<TCacheItem?> GetAsync(string key, CancellationToken token = default)
     {
@@ -45,7 +45,7 @@ public class RedisDistributedCache<TCacheItem>(IDistributedCache distributedCach
         }
     }
 
-    public async Task SetAsync([NotNull] string key, [NotNull] TCacheItem value, DistributedCacheEntryOptions? options = null, CancellationToken token = default)
+    public async Task SetAsync(string key, [NotNull] TCacheItem value, DistributedCacheEntryOptions? options = null, CancellationToken token = default)
     {
         var json = JsonSerializer.Serialize(value, CreateJsonSerializerOptions());
         await distributedCache.SetAsync(key, Encoding.UTF8.GetBytes(json), options ?? _defaultOption, token);
@@ -69,17 +69,17 @@ public class RedisDistributedCache<TCacheItem>(IDistributedCache distributedCach
         return (TCacheItem?)JsonSerializer.Deserialize(Encoding.UTF8.GetString(bytes), typeof(TCacheItem), CreateJsonSerializerOptions());
     }
 
-    private static readonly ConcurrentDictionary<object, JsonSerializerOptions> JsonSerializerOptionsCache =
+    private readonly ConcurrentDictionary<object, JsonSerializerOptions> _jsonSerializerOptionsCache =
         new ConcurrentDictionary<object, JsonSerializerOptions>();
 
-    protected virtual JsonSerializerOptions CreateJsonSerializerOptions(bool camelCase = true, bool indented = false)
+    private JsonSerializerOptions CreateJsonSerializerOptions(bool camelCase = true, bool indented = false)
     {
         var option = new JsonSerializerOptions(JsonSerializerDefaults.Web)
         {
             ReadCommentHandling = JsonCommentHandling.Skip,
             AllowTrailingCommas = true
         };
-        return JsonSerializerOptionsCache.GetOrAdd(new
+        return _jsonSerializerOptionsCache.GetOrAdd(new
         {
             camelCase,
             indented,

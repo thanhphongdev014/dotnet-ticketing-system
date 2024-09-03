@@ -6,7 +6,7 @@ public abstract class ValueObject
 
     public bool ValueEquals(object obj)
     {
-        if (obj == null || obj.GetType() != GetType())
+        if (obj.GetType() != GetType())
         {
             return false;
         }
@@ -14,7 +14,9 @@ public abstract class ValueObject
         var other = (ValueObject)obj;
 
         var thisValues = GetAtomicValues().GetEnumerator();
+        using var thisValues1 = thisValues as IDisposable;
         var otherValues = other.GetAtomicValues().GetEnumerator();
+        using var otherValues1 = otherValues as IDisposable;
 
         var thisMoveNext = thisValues.MoveNext();
         var otherMoveNext = otherValues.MoveNext();

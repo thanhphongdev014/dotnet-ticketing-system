@@ -7,12 +7,12 @@ public abstract class Entity : IEntity
         return $"[ENTITY: {GetType().Name}] Keys = {string.Join(", ", GetKeys())}";
     }
 
-    public abstract object?[] GetKeys();
+    protected abstract object?[] GetKeys();
 }
 
 public abstract class Entity<TKey> : Entity, IEntity<TKey>
 {
-    public virtual TKey Id { get; protected set; } = default!;
+    public virtual TKey Id { get; private set; } = default!;
 
     protected Entity()
     {
@@ -24,7 +24,7 @@ public abstract class Entity<TKey> : Entity, IEntity<TKey>
         Id = id;
     }
 
-    public override object?[] GetKeys()
+    protected override object?[] GetKeys()
     {
         return [Id];
     }

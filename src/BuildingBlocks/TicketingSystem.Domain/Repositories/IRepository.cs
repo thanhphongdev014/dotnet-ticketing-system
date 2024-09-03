@@ -3,7 +3,7 @@ using TicketingSystem.Domain.Entities;
 
 namespace TicketingSystem.Domain.Repositories;
 
-public interface IRepository<TEntity, TKey> where TEntity : Entity<TKey>, IAggregateRoot
+public interface IRepository<TEntity, in TKey> where TEntity : Entity<TKey>, IAggregateRoot
 {
     IUnitOfWork UnitOfWork { get; }
 

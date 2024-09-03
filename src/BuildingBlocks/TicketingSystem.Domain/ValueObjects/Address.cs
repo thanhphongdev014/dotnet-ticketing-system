@@ -1,10 +1,10 @@
 ﻿namespace TicketingSystem.Domain.ValueObjects;
 
-public class Address : ValueObject
+public class Address(string street, string district, string city) : ValueObject
 {
-    public required string Street { get; init; }
-    public required string District { get; init; }
-    public required string City { get; init; }
+    public required string Street { get; init; } = street;
+    public required string District { get; init; } = district;
+    public required string City { get; init; } = city;
 
     protected override IEnumerable<object> GetAtomicValues()
     {

@@ -1,9 +1,9 @@
 ﻿namespace TicketingSystem.Domain.ValueObjects;
 
-public class Money : ValueObject
+public class Money(decimal amount, string currency) : ValueObject
 {
-    public required decimal Amount { get; init; }
-    public required string Currency { get; init; }
+    public required decimal Amount { get; init; } = amount;
+    public required string Currency { get; init; } = currency;
 
     protected override IEnumerable<object> GetAtomicValues()
     {
