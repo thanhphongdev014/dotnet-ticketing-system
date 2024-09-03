@@ -7,16 +7,16 @@ public static class CacheServiceExtension
     {
         services.AddMemoryCache(opt =>
         {
-            opt.SizeLimit = options?.InMemory?.SizeLimit;
+            opt.SizeLimit = options?.InMemory.SizeLimit;
         });
 
-        var distributedProvider = options?.Distributed?.Provider;
+        var distributedProvider = options?.Distributed.Provider;
 
         if (distributedProvider == "InMemory")
         {
             services.AddDistributedMemoryCache(opt =>
             {
-                opt.SizeLimit = options?.Distributed?.InMemory?.SizeLimit;
+                opt.SizeLimit = options?.Distributed.InMemory.SizeLimit;
             });
         }
         else if (distributedProvider == "Redis")
@@ -26,6 +26,7 @@ public static class CacheServiceExtension
                 opt.Configuration = options?.Distributed.Redis.Configuration;
                 opt.InstanceName = options?.Distributed.Redis.InstanceName;
             });
+            services.AddScoped(typeof(IDistributedCache<>), typeof(RedisDistributedCache<>));
         }
 
         return services;
