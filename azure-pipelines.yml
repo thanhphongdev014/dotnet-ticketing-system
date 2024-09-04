@@ -15,7 +15,20 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- checkout: self
+  fetchDepth: 0
 - task: NuGetToolInstaller@1
+- task: SonarCloudPrepare@2
+  inputs:
+    SonarCloud: 'SonarCloud'
+    organization: 'dotnetticketingsystem'
+    scannerMode: 'MSBuild'
+    projectKey: 'DotnetTicketingSystem_ticketing-system'
+    projectName: 'ticketing-system'
+    
+- task: SonarCloudAnalyze@2
+  inputs:
+    jdkversion: 'JAVA_HOME_17_X64'
 
 - task: NuGetCommand@2
   inputs:
@@ -27,7 +40,9 @@ steps:
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-
+- task: SonarCloudPublish@2
+  inputs:
+    pollingTimeoutSec: '300'
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
