@@ -9,13 +9,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3A1F6415
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{AFB77B90-3D52-43F1-8A65-9502205E9943}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSystem.Domain", "src\BuildingBlocks\TicketingSystem.Domain\TicketingSystem.Domain.csproj", "{F799F899-4EBD-48AF-B529-B0EE4F8F50C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketingSystem.Domain", "src\BuildingBlocks\TicketingSystem.Domain\TicketingSystem.Domain.csproj", "{F799F899-4EBD-48AF-B529-B0EE4F8F50C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketSystem.Application", "src\BuildingBlocks\TicketSystem.Application\TicketSystem.Application.csproj", "{0F7092B8-CCF5-4CA5-B1C4-A9593F5EFEBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketSystem.Application", "src\BuildingBlocks\TicketSystem.Application\TicketSystem.Application.csproj", "{0F7092B8-CCF5-4CA5-B1C4-A9593F5EFEBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSystem.Persistence", "src\BuildingBlocks\TicketingSystem.Persistence\TicketingSystem.Persistence.csproj", "{E556B5A7-F5C8-4AF0-A399-D98E7505C299}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketingSystem.Persistence", "src\BuildingBlocks\TicketingSystem.Persistence\TicketingSystem.Persistence.csproj", "{E556B5A7-F5C8-4AF0-A399-D98E7505C299}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSystem.Infrastructure", "src\BuildingBlocks\TicketingSystem.Infrastructure\TicketingSystem.Infrastructure.csproj", "{E4F7C544-2657-4CDA-BF1E-796C3E361FDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketingSystem.Infrastructure", "src\BuildingBlocks\TicketingSystem.Infrastructure\TicketingSystem.Infrastructure.csproj", "{E4F7C544-2657-4CDA-BF1E-796C3E361FDE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{8FE157B9-6752-4A06-B4E1-772F3DBF0C59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSystem.Services.Event.Api", "src\Services\TicketingSystem.Services.Event.Api\TicketingSystem.Services.Event.Api.csproj", "{7460FA15-0CD2-4749-9F92-D0A1A6994543}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Event", "Event", "{629C8645-C72E-4040-9D2E-201292B3DEF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSystem.Event.UnitTests", "tests\Event\TicketingSystem.Event.UnitTests\TicketingSystem.Event.UnitTests.csproj", "{D94A2DA0-149D-40A3-9576-4087025F6D1B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +47,14 @@ Global
 		{E4F7C544-2657-4CDA-BF1E-796C3E361FDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4F7C544-2657-4CDA-BF1E-796C3E361FDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4F7C544-2657-4CDA-BF1E-796C3E361FDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7460FA15-0CD2-4749-9F92-D0A1A6994543}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7460FA15-0CD2-4749-9F92-D0A1A6994543}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7460FA15-0CD2-4749-9F92-D0A1A6994543}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7460FA15-0CD2-4749-9F92-D0A1A6994543}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D94A2DA0-149D-40A3-9576-4087025F6D1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D94A2DA0-149D-40A3-9576-4087025F6D1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D94A2DA0-149D-40A3-9576-4087025F6D1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D94A2DA0-149D-40A3-9576-4087025F6D1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,6 +65,10 @@ Global
 		{0F7092B8-CCF5-4CA5-B1C4-A9593F5EFEBC} = {AFB77B90-3D52-43F1-8A65-9502205E9943}
 		{E556B5A7-F5C8-4AF0-A399-D98E7505C299} = {AFB77B90-3D52-43F1-8A65-9502205E9943}
 		{E4F7C544-2657-4CDA-BF1E-796C3E361FDE} = {AFB77B90-3D52-43F1-8A65-9502205E9943}
+		{8FE157B9-6752-4A06-B4E1-772F3DBF0C59} = {BC2104DB-AB93-408D-B5FC-0C6D501A64FA}
+		{7460FA15-0CD2-4749-9F92-D0A1A6994543} = {8FE157B9-6752-4A06-B4E1-772F3DBF0C59}
+		{629C8645-C72E-4040-9D2E-201292B3DEF4} = {3A1F6415-4A2E-45AE-9008-1BCDBEA3FB5C}
+		{D94A2DA0-149D-40A3-9576-4087025F6D1B} = {629C8645-C72E-4040-9D2E-201292B3DEF4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0D30B876-A497-429F-9E0E-DA8424B035FE}
