@@ -5,8 +5,6 @@ namespace TicketingSystem.Domain.Repositories;
 
 public interface IRepository<TEntity, in TKey> where TEntity : Entity<TKey>, IAggregateRoot
 {
-    IUnitOfWork UnitOfWork { get; }
-
     IQueryable<TEntity> GetQueryableAsync();
 
     Task AddOrUpdateAsync(TEntity entity, CancellationToken cancellationToken = default);

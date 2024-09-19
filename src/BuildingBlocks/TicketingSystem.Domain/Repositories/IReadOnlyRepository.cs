@@ -5,8 +5,6 @@ namespace TicketingSystem.Domain.Repositories;
 
 public interface IReadOnlyRepository<TEntity, in TKey> where TEntity : Entity<TKey>, IAggregateRoot
 {
-    IUnitOfWork UnitOfWork { get; }
-
     IQueryable<TEntity> GetQueryableAsync();
 
     Task<TEntity> GetAsync(TKey id);
