@@ -5,11 +5,9 @@ namespace TicketingSystem.Domain.Repositories;
 public interface IRepository<TEntity, in TKey> : IReadOnlyRepository<TEntity, TKey>
     where TEntity : Entity<TKey>, IAggregateRoot
 {
-    Task AddOrUpdateAsync(TEntity entity, CancellationToken cancellationToken = default);
+    Task InsertAsync(TEntity entity, CancellationToken cancellationToken = default, bool isAutoSave = false);
 
-    Task AddAsync(TEntity entity, CancellationToken cancellationToken = default);
+    Task UpdateAsync(TEntity entity, CancellationToken cancellationToken = default, bool isAutoSave = false);
 
-    Task UpdateAsync(TEntity entity, CancellationToken cancellationToken = default);
-
-    Task DeleteAsync(TEntity entity);
+    Task DeleteAsync(TEntity entity, CancellationToken cancellationToken = default, bool isAutoSave = false);
 }
