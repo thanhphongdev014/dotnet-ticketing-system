@@ -2,11 +2,9 @@
 using Scrutor;
 using TicketingSystem.Domain;
 using TicketingSystem.Domain.Repositories;
-using TicketingSystem.Persistence;
 using TicketingSystem.Persistence.Decorators;
-using TicketingSystem.Persistence.Repositories;
 
-namespace TicketingSystem.Infrastructure.Extensions;
+namespace TicketingSystem.Persistence.Repositories;
 
 public static class ServiceCollectionRepositoryExtensions
 {

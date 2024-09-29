@@ -19,7 +19,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TicketingSystem.Domain\TicketingSystem.Domain.csproj" />
-    <ProjectReference Include="..\TicketingSystem.Persistence\TicketingSystem.Persistence.csproj" />
     <ProjectReference Include="..\TicketingSystem.Shared\TicketingSystem.Shared.csproj" />
   </ItemGroup>
 

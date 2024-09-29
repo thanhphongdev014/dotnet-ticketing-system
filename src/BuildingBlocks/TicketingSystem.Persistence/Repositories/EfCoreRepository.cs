@@ -4,7 +4,6 @@ using TicketingSystem.Domain.Entities;
 using TicketingSystem.Domain.Exceptions;
 using TicketingSystem.Domain.Repositories;
 using TicketingSystem.Persistence.EntityFrameworkCore;
-using TicketingSystem.Persistence.Extensions;
 
 namespace TicketingSystem.Persistence.Repositories;
 public class EfCoreRepository<TEntity, TKey>(BaseDbContext dbContext) : IRepository<TEntity, TKey>

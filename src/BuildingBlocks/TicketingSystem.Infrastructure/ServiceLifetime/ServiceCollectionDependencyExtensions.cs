@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using TicketingSystem.Shared.ServiceLifetimes;
 
-namespace TicketingSystem.Infrastructure.Extensions;
+namespace TicketingSystem.Infrastructure.ServiceLifetime;
 public static class ServiceCollectionDependencyExtensions 
 {
     public static IServiceCollection AddRegisterServices(this IServiceCollection services)
