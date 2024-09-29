@@ -3,15 +3,18 @@ using Scrutor;
 using TicketingSystem.Domain;
 using TicketingSystem.Domain.Repositories;
 using TicketingSystem.Persistence;
+using TicketingSystem.Persistence.Decorators;
 using TicketingSystem.Persistence.Repositories;
 
 namespace TicketingSystem.Infrastructure.Extensions;
+
 public static class ServiceCollectionRepositoryExtensions
 {
     public static IServiceCollection AddRepositories(this IServiceCollection services)
     {
         services.AddDefaultRepositories()
-                .AddCustomRepositories();
+            .AddCustomRepositories()
+            .Decorate(typeof(IRepository<,>), typeof(RepositoryDecorator<,>));
         return services;
     }
 
@@ -22,9 +25,9 @@ public static class ServiceCollectionRepositoryExtensions
         return services;
     }
 
-    private static void AddCustomRepositories(this IServiceCollection services)
+    private static IServiceCollection AddCustomRepositories(this IServiceCollection services)
     {
-        services.Scan(selector => selector
+        return services.Scan(selector => selector
             .FromAssemblies(
                 typeof(DomainAssembly).Assembly,
                 typeof(PersistenceAssembly).Assembly)
@@ -33,5 +36,4 @@ public static class ServiceCollectionRepositoryExtensions
             .AsMatchingInterface()
             .WithScopedLifetime());
     }
-
 }

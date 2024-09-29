@@ -10,20 +10,18 @@ namespace TicketingSystem.Persistence.Repositories;
 public class EfCoreRepository<TEntity, TKey>(BaseDbContext dbContext) : IRepository<TEntity, TKey>
     where TEntity : Entity<TKey>, IAggregateRoot
 {
-    private readonly BaseDbContext _dbContext = dbContext;
-
-    public bool? ShouldTrackingEntity { get; private set; }
+    public virtual bool? ShouldTrackingEntity { get; protected set; }
 
     public async Task<TEntity?> FirstOrDefaultAsync(Expression<Func<TEntity, bool>>? predicate = null, CancellationToken cancellationToken = default)
     {
         return predicate != null ?
-            await _dbContext.Set<TEntity>().AsNoTrackingIf(!ShouldTracking()).FirstOrDefaultAsync(predicate, cancellationToken) :
-            await _dbContext.Set<TEntity>().AsNoTrackingIf(!ShouldTracking()).FirstOrDefaultAsync(cancellationToken);
+            await dbContext.Set<TEntity>().AsNoTrackingIf(!ShouldTracking()).FirstOrDefaultAsync(predicate, cancellationToken) :
+            await dbContext.Set<TEntity>().AsNoTrackingIf(!ShouldTracking()).FirstOrDefaultAsync(cancellationToken);
     }
 
     public async Task<TEntity> GetAsync(TKey id)
     {
-        var entity = await _dbContext.Set<TEntity>().AsNoTrackingIf(!ShouldTracking()).FirstOrDefaultAsync(x => x.Id!.Equals(id));
+        var entity = await dbContext.Set<TEntity>().AsNoTrackingIf(!ShouldTracking()).FirstOrDefaultAsync(x => x.Id!.Equals(id));
         if (entity == null)
         {
             throw new EntityNotFoundException(typeof(TEntity), id);
@@ -35,47 +33,47 @@ public class EfCoreRepository<TEntity, TKey>(BaseDbContext dbContext) : IReposit
     {
         if (predicate != null)
         {
-            var entities = _dbContext.Set<TEntity>().AsNoTrackingIf(!ShouldTracking()).Where(predicate);
+            var entities = dbContext.Set<TEntity>().AsNoTrackingIf(!ShouldTracking()).Where(predicate);
             return await entities.ToListAsync(cancellationToken);
         }
         else
         {
-            return await _dbContext.Set<TEntity>().AsNoTrackingIf(!ShouldTracking()).ToListAsync(cancellationToken);
+            return await dbContext.Set<TEntity>().AsNoTrackingIf(!ShouldTracking()).ToListAsync(cancellationToken);
         }
     }
 
     public IQueryable<TEntity> GetQueryableAsync()
     {
-        return _dbContext.Set<TEntity>().AsNoTrackingIf(!ShouldTracking()).AsQueryable();
+        return dbContext.Set<TEntity>().AsNoTrackingIf(!ShouldTracking()).AsQueryable();
     }
 
     public async Task InsertAsync(TEntity entity, CancellationToken cancellationToken = default, bool isAutoSave = false)
     {
-        await _dbContext.Set<TEntity>().AddAsync(entity, cancellationToken);
+        await dbContext.Set<TEntity>().AddAsync(entity, cancellationToken);
         if (isAutoSave)
         {
-            await _dbContext.SaveChangesAsync(cancellationToken);
+            await dbContext.SaveChangesAsync(cancellationToken);
         }
     }
 
     public async Task UpdateAsync(TEntity entity, CancellationToken cancellationToken = default, bool isAutoSave = false)
     {
-        if (_dbContext.Set<TEntity>().Local.All(e => e != entity))
+        if (dbContext.Set<TEntity>().Local.All(e => e != entity))
         {
-            _dbContext.Set<TEntity>().Attach(entity);
-            _dbContext.Update(entity);
+            dbContext.Set<TEntity>().Attach(entity);
+            dbContext.Update(entity);
         }
         if (isAutoSave)
         {
-            await _dbContext.SaveChangesAsync(cancellationToken);
+            await dbContext.SaveChangesAsync(cancellationToken);
         }
     }
     public async Task DeleteAsync(TEntity entity, CancellationToken cancellationToken, bool isAutoSave = false)
     {
-        _dbContext.Set<TEntity>().Remove(entity);
+        dbContext.Set<TEntity>().Remove(entity);
         if (isAutoSave)
         {
-            await _dbContext.SaveChangesAsync(cancellationToken);
+            await dbContext.SaveChangesAsync(cancellationToken);
         }
     }
 
