@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Event", "Event", "{629C8645
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSystem.Event.UnitTests", "tests\Event\TicketingSystem.Event.UnitTests\TicketingSystem.Event.UnitTests.csproj", "{D94A2DA0-149D-40A3-9576-4087025F6D1B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSystem.Shared", "src\BuildingBlocks\TicketingSystem.Shared\TicketingSystem.Shared.csproj", "{1D628569-5504-4831-A5D1-BBE57A4C2C5E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{D94A2DA0-149D-40A3-9576-4087025F6D1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D94A2DA0-149D-40A3-9576-4087025F6D1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D94A2DA0-149D-40A3-9576-4087025F6D1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D628569-5504-4831-A5D1-BBE57A4C2C5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D628569-5504-4831-A5D1-BBE57A4C2C5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D628569-5504-4831-A5D1-BBE57A4C2C5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D628569-5504-4831-A5D1-BBE57A4C2C5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +75,7 @@ Global
 		{7460FA15-0CD2-4749-9F92-D0A1A6994543} = {8FE157B9-6752-4A06-B4E1-772F3DBF0C59}
 		{629C8645-C72E-4040-9D2E-201292B3DEF4} = {3A1F6415-4A2E-45AE-9008-1BCDBEA3FB5C}
 		{D94A2DA0-149D-40A3-9576-4087025F6D1B} = {629C8645-C72E-4040-9D2E-201292B3DEF4}
+		{1D628569-5504-4831-A5D1-BBE57A4C2C5E} = {AFB77B90-3D52-43F1-8A65-9502205E9943}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0D30B876-A497-429F-9E0E-DA8424B035FE}
