@@ -33,7 +33,7 @@ public abstract class AggregateRoot : Entity, IHasConcurrencyStamp
     }
 }
 
-public abstract class AggregateRoot<TKey> : Entity<TKey>, IHasConcurrencyStamp
+public abstract class AggregateRoot<TKey> : Entity<TKey>, IHasConcurrencyStamp, IAggregateRoot
 {
     private readonly List<IDomainEvent> _localEvents = new List<IDomainEvent>();
     private readonly List<IDomainEvent> _distributedEvents = new List<IDomainEvent>();
