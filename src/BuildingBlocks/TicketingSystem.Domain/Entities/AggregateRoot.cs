@@ -4,8 +4,8 @@ namespace TicketingSystem.Domain.Entities;
 
 public abstract class AggregateRoot : Entity, IHasConcurrencyStamp
 {
-    private readonly List<IDomainEvent> _localEvents = new List<IDomainEvent>();
-    private readonly List<IDomainEvent> _distributedEvents = new List<IDomainEvent>();
+    private readonly List<IDomainEvent> _localEvents = [];
+    private readonly List<IDomainEvent> _distributedEvents = [];
 
     public IReadOnlyCollection<IDomainEvent> LocalEvents => _localEvents.AsReadOnly();
     public IReadOnlyCollection<IDomainEvent> DistributedEvents => _distributedEvents.AsReadOnly();
@@ -24,11 +24,13 @@ public abstract class AggregateRoot : Entity, IHasConcurrencyStamp
 
     protected virtual void AddLocalEvent(IDomainEvent domainEvent)
     {
+        domainEvent.EventType = EventType.LocalEvent;
         _localEvents.Add(domainEvent);
     }
 
     protected virtual void AddDistributedEvent(IDomainEvent domainEvent)
     {
+        domainEvent.EventType = EventType.DistributedEvent;
         _distributedEvents.Add(domainEvent);
     }
 }

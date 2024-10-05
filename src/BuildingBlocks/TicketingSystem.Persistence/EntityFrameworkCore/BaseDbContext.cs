@@ -1,10 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using TicketingSystem.Domain.Entities;
+using TicketingSystem.Infrastructure.OutboxMessage;
 
 namespace TicketingSystem.Persistence.EntityFrameworkCore;
 public class BaseDbContext : DbContext
 {
+    public DbSet<OutboxMessage> OutboxMessages { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
