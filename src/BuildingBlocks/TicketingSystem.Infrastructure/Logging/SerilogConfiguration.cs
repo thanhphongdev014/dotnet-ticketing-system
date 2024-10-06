@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using Elastic.CommonSchema.Serilog;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Events;
@@ -27,7 +28,8 @@ public static class SerilogConfiguration
             .WriteTo.Async(c => c.File($"Logs/logs-.log", rollingInterval: RollingInterval.Day))
             .WriteTo.Async(c => c.Console())
 #else
-            .WriteTo.Async(c => c.File(new Elastic.CommonSchema.Serilog.EcsTextFormatter(), $"Logs/{hostName}_logs-.json", rollingInterval: RollingInterval.Day))
+            .WriteTo.Async(c => c.File(new EcsTextFormatter(), $"Logs/{hostName}_logs-.json",
+                rollingInterval: RollingInterval.Day))
             .WriteTo.Async(c => c.Console())
 #endif
             .CreateLogger();
