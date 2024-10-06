@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using Newtonsoft.Json;
 using TicketingSystem.Domain.Entities;
 using TicketingSystem.Domain.Events;
-using TicketingSystem.Infrastructure.OutboxMessage;
+using TicketingSystem.Infrastructure.OutboxMessages;
 
 namespace TicketingSystem.Persistence.Interceptors;
 
@@ -13,7 +13,7 @@ public sealed class InsertOutboxMessagesInterceptor : SaveChangesInterceptor
     {
         TypeNameHandling = TypeNameHandling.All
     };
-
+    
     public override ValueTask<InterceptionResult<int>> SavingChangesAsync(
         DbContextEventData eventData,
         InterceptionResult<int> result,
@@ -29,7 +29,7 @@ public sealed class InsertOutboxMessagesInterceptor : SaveChangesInterceptor
 
     private static void InsertOutboxMessages(DbContext context)
     {
-        context
+        var outboxMessages = context
             .ChangeTracker
             .Entries<AggregateRoot>()
             .Select(entry => entry.Entity)
@@ -47,12 +47,16 @@ public sealed class InsertOutboxMessagesInterceptor : SaveChangesInterceptor
 
                 return domainEvents;
             })
-            .Select(domainEvent => new OutboxMessage
+            .Select(domainEvent =>
             {
-                Id = domainEvent.Id,
-                OccurredOnUtc = domainEvent.OccurredOnUtc,
-                Type = domainEvent.GetType().Name,
-                Content = JsonConvert.SerializeObject(domainEvent, Serializer)
+                var type = domainEvent.GetType().FullName ?? string.Empty;
+                var data = JsonConvert.SerializeObject(domainEvent, Serializer);
+                
+                return new OutboxMessage(domainEvent.OccurredOn,
+                    type,
+                    domainEvent.EventType,
+                    data
+                );
             })
             .ToList();
 

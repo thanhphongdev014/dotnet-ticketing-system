@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using TicketingSystem.Domain.Entities;
-using TicketingSystem.Infrastructure.OutboxMessage;
+using TicketingSystem.Infrastructure.OutboxMessages;
 
 namespace TicketingSystem.Persistence.EntityFrameworkCore;
 public class BaseDbContext : DbContext

@@ -1,31 +1,31 @@
 ﻿using TicketingSystem.Domain.Events;
 
-namespace TicketingSystem.Infrastructure.OutboxMessage;
+namespace TicketingSystem.Infrastructure.OutboxMessages;
 
 public class OutboxMessage
 {
     public Guid Id { get; set; }
 
-    public DateTime OccurredOn { get; set; }
+    public DateTimeOffset OccurredOn { get; set; }
 
-    public string Type { get; set; } = null!;
+    public string Type { get; set; }
 
     public EventType EventType { get; set; }
 
-    public string Data { get; set; } = null!;
+    public string Data { get; set; }
 
     public DateTime? ProcessedDate { get; set; }
 
     private OutboxMessage()
     {
-            
     }
 
-    public OutboxMessage(DateTime occurredOn, string type, string data)
+    public OutboxMessage(DateTimeOffset occurredOn, string type, EventType eventType, string data)
     {
         Id = Guid.NewGuid();
         OccurredOn = occurredOn;
         Type = type;
+        EventType = eventType;
         Data = data;
     }
 }
