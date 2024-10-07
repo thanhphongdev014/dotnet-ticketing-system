@@ -10,4 +10,8 @@
     <PackageReference Include="MediatR" Version="12.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TicketingSystem.Shared\TicketingSystem.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

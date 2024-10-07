@@ -2,10 +2,9 @@
 
 namespace TicketingSystem.Services.Event.Domain.Entities;
 
-public class Event
-    : AggregateRoot<Guid>, IAuditedObject
+public class Event : AggregateRoot<Guid>, IAuditedObject
 {
-    public Event(Guid id, string name, DateTimeOffset startDate, DateTimeOffset endDate) : base(id)
+    internal Event(Guid id, string name, DateTimeOffset startDate, DateTimeOffset endDate) : base(id)
     {
         Name = name;
         StartDate = startDate;
