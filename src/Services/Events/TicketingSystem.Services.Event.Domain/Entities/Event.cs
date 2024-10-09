@@ -5,12 +5,13 @@ namespace TicketingSystem.Services.Event.Domain.Entities;
 
 public class Event : AggregateRoot<Guid>, IAuditedObject
 {
-    internal Event(Guid id, string name, Address address, DateTimeOffset startDate, DateTimeOffset endDate) : base(id)
+    internal Event(Guid id, string name, Address address, DateTimeOffset startDate, DateTimeOffset endDate, List<EventImage> images) : base(id)
     {
         Name = name;
         Location = address;
         StartDate = startDate;
         EndDate = endDate;
+        Images = images;
     }
 
     public string Name { get; internal set; }
@@ -19,4 +20,5 @@ public class Event : AggregateRoot<Guid>, IAuditedObject
     public DateTimeOffset EndDate { get; internal set; }
     public DateTimeOffset LastModificationTime { get; set; }
     public DateTimeOffset CreationTime { get; set; }
+    public List<EventImage> Images { get; private set; }
 }
