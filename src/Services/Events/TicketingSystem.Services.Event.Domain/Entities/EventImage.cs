@@ -2,8 +2,8 @@
 
 namespace TicketingSystem.Services.Event.Domain.Entities;
 
-public class EventImage : Entity<Guid>
+public class EventImage(Guid id, Guid eventId, string fileName) : Entity<Guid>(id)
 {
-    public Guid EventId { get; set; }
-    public string FileName { get; set; } = string.Empty;
+    public Guid EventId { get; set; } = eventId;
+    public string FileName { get; set; } = fileName;
 }
