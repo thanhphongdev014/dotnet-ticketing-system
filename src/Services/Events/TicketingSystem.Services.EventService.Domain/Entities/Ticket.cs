@@ -1,8 +1,8 @@
 ﻿using TicketingSystem.Domain.Entities;
 using TicketingSystem.Domain.ValueObjects;
-using TicketingSystem.Services.Event.Domain.Enums;
+using TicketingSystem.Services.EventService.Domain.Enums;
 
-namespace TicketingSystem.Services.Event.Domain.Entities;
+namespace TicketingSystem.Services.EventService.Domain.Entities;
 
 public class Ticket(Guid id, string seat, Money price, TicketStatus status)
     : AggregateRoot<Guid>(id), IAuditedObject

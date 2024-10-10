@@ -1,5 +1,5 @@
 ﻿using TicketingSystem.Domain.Events;
 
-namespace TicketingSystem.Services.Event.Domain.DomainEvents;
+namespace TicketingSystem.Services.EventService.Domain.DomainEvents;
 
 public class EventCreated : DomainEventBase;
