@@ -1,6 +1,6 @@
 ﻿using TicketingSystem.Domain.Entities;
 
-namespace TicketingSystem.Services.EventService.Domain.Entities;
+namespace TicketingSystem.Services.EventService.Domain.Events;
 
 public class EventImage(Guid id, Guid eventId, string fileName) : Entity<Guid>(id)
 {

@@ -1,7 +1,7 @@
 ﻿using TicketingSystem.Domain.Entities;
 using TicketingSystem.Domain.ValueObjects;
 
-namespace TicketingSystem.Services.EventService.Domain.Entities;
+namespace TicketingSystem.Services.EventService.Domain.Events;
 
 public class Event : AggregateRoot<Guid>, IAuditedObject
 {
