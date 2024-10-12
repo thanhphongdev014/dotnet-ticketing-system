@@ -11,7 +11,12 @@ public interface IReadOnlyRepository<TEntity, in TKey> where TEntity : Entity<TK
 
     Task<TEntity> GetAsync(TKey id);
 
-    Task<List<TEntity>> GetListAsync(Expression<Func<TEntity, bool>>? predicate = null, CancellationToken cancellationToken = default);
+    Task<List<TEntity>> GetListAsync(Expression<Func<TEntity, bool>>? predicate = null,
+        CancellationToken cancellationToken = default);
 
-    Task<TEntity?> FirstOrDefaultAsync(Expression<Func<TEntity, bool>>? predicate = null, CancellationToken cancellationToken = default);
+    Task<TEntity?> FirstOrDefaultAsync(Expression<Func<TEntity, bool>>? predicate = null,
+        CancellationToken cancellationToken = default);
+
+    Task<bool> AnyAsync(Expression<Func<TEntity, bool>>? predicate = null,
+        CancellationToken cancellationToken = default);
 }

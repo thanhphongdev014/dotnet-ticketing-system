@@ -17,6 +17,13 @@ public class EfCoreRepository<TEntity, TKey>(BaseDbContext dbContext) : IReposit
             await dbContext.Set<TEntity>().AsNoTrackingIf(!ShouldTracking()).FirstOrDefaultAsync(predicate, cancellationToken) :
             await dbContext.Set<TEntity>().AsNoTrackingIf(!ShouldTracking()).FirstOrDefaultAsync(cancellationToken);
     }
+    
+    public async Task<bool> AnyAsync(Expression<Func<TEntity, bool>>? predicate = null, CancellationToken cancellationToken = default)
+    {
+        return predicate != null ?
+            await dbContext.Set<TEntity>().AsNoTrackingIf(!ShouldTracking()).AnyAsync(predicate, cancellationToken) :
+            await dbContext.Set<TEntity>().AsNoTrackingIf(!ShouldTracking()).AnyAsync(cancellationToken);
+    }
 
     public async Task<TEntity> GetAsync(TKey id)
     {
