@@ -3,7 +3,7 @@ using TicketingSystem.Domain.ValueObjects;
 
 namespace TicketingSystem.Services.EventService.Domain.Events;
 
-public class Event : AggregateRoot<Guid>, IAuditedObject
+public class Event : AggregateRoot<Guid>, IAuditedObject, IHasNameEntity
 {
     internal Event(Guid id, string name, Guid userId, Address address, DateTimeOffset startDate, DateTimeOffset endDate, List<EventImage> images) : base(id)
     {
