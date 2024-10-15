@@ -29,7 +29,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EventService", "EventServic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSystem.Services.EventService.Domain", "src\Services\Events\TicketingSystem.Services.EventService.Domain\TicketingSystem.Services.EventService.Domain.csproj", "{49DE2005-1DD3-47C0-A343-4EFA9D0EDD2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSystem.Serivces.EventService.Application", "src\Services\TicketingSystem.Serivces.EventService.Application\TicketingSystem.Serivces.EventService.Application.csproj", "{BD167C73-40F8-437F-BF7F-E94E1A8C11B3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSystem.Services.EventService.Application", "src\Services\TicketingSystem.Services.EventService.Application\TicketingSystem.Services.EventService.Application.csproj", "{BD167C73-40F8-437F-BF7F-E94E1A8C11B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
