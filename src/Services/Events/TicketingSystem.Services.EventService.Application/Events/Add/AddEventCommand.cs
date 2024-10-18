@@ -1,4 +1,8 @@
 ﻿using MediatR;
+using TicketingSystem.Domain.Repositories;
+using TicketingSystem.Domain.ValueObjects;
+using TicketingSystem.Services.EventService.Domain.Events;
+using TicketSystem.Application.Identity;
 
 namespace TicketingSystem.Services.EventService.Application.Events.Add;
 
@@ -20,10 +24,23 @@ public class AddEventCommand(
     public List<string> ImageNames { get; set; } = imageNames;
 }
 
-public class AddEventCommandHandler : IRequestHandler<AddEventCommand>
+public class AddEventCommandHandler(
+    IRepository<Event, Guid> eventRepository,
+    EventManager eventManager,
+    ICurrentUser currentUser) : IRequestHandler<AddEventCommand>
 {
-    public Task Handle(AddEventCommand request, CancellationToken cancellationToken)
+    public async Task Handle(AddEventCommand request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var currentUserId = currentUser.UserId ?? Guid.Empty; // change later
+        var address = new Address(request.Street, request.District, request.City)
+        {
+            Street = request.Street,
+            District = request.District,
+            City = request.City
+        };
+        var eventId = Guid.NewGuid();
+        var eventEntity = await eventManager.CreateAsync(eventId, request.Name, currentUserId, address,
+            request.StartDate, request.EndDate,
+            request.ImageNames.Select(x => new EventImage(Guid.NewGuid(), eventId, x)).ToList());
     }
 }

@@ -8,7 +8,7 @@ namespace TicketingSystem.Services.EventService.Domain.Events;
 
 public class EventManager(IReadOnlyRepository<Event, Guid> repository) : DomainService
 {
-    public async Task<Event> CreateAsync(string name, Guid userId, Address address, DateTimeOffset startDate,
+    public async Task<Event> CreateAsync(Guid id, string name, Guid userId, Address address, DateTimeOffset startDate,
         DateTimeOffset endDate, List<EventImage> images)
     {
         await CheckRule(new NameMustBeUniqueRule<Event, Guid>(repository, name));
