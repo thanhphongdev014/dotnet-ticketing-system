@@ -42,5 +42,6 @@ public class AddEventCommandHandler(
         var eventEntity = await eventManager.CreateAsync(eventId, request.Name, currentUserId, address,
             request.StartDate, request.EndDate,
             request.ImageNames.Select(x => new EventImage(Guid.NewGuid(), eventId, x)).ToList());
+        await eventRepository.InsertAsync(eventEntity, cancellationToken);
     }
 }
