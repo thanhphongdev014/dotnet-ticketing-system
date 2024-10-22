@@ -2,9 +2,9 @@
 
 public class Address(string street, string district, string city) : ValueObject
 {
-    public required string Street { get; init; } = street;
-    public required string District { get; init; } = district;
-    public required string City { get; init; } = city;
+    public string Street { get; init; } = street;
+    public string District { get; init; } = district;
+    public string City { get; init; } = city;
 
     protected override IEnumerable<object> GetAtomicValues()
     {

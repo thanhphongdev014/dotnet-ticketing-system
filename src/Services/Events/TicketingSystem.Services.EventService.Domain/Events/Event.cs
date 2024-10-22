@@ -19,7 +19,7 @@ public class Event : AggregateRoot<Guid>, IAuditedObject, IHasNameEntity
     public Guid UserId { get; set; }
     public Address Location { get; set; }
     public DateTimeOffset StartDate { get; internal set; }
-    public DateTimeOffset EndDate { get; internal set; }
+    public DateTimeOffset EndDate { get; set; }
     public DateTimeOffset LastModificationTime { get; set; }
     public DateTimeOffset CreationTime { get; set; }
     public List<EventImage> Images { get; internal set; }

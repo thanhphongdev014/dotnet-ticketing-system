@@ -1,11 +1,12 @@
 ﻿using MediatR;
 using TicketingSystem.Domain.Repositories;
+using TicketingSystem.Domain.ValueObjects;
 using TicketingSystem.Services.EventService.Domain.Events;
-using TicketSystem.Application.Identity;
 
 namespace TicketingSystem.Services.EventService.Application.Events.Update;
 
 public class UpdateEventCommand(
+    Guid eventId,
     string name,
     string street,
     string district,
@@ -14,6 +15,7 @@ public class UpdateEventCommand(
     DateTimeOffset endDate,
     List<string> imageNames) : IRequest
 {
+    public Guid EventId { get; set; } = eventId;
     public string Name { get; set; } = name;
     public string Street { get; set; } = street;
     public string District { get; set; } = district;
@@ -25,11 +27,16 @@ public class UpdateEventCommand(
 
 public class UpdateEventCommandHandler(
     IRepository<Event, Guid> eventRepository,
-    EventManager eventManager,
-    ICurrentUser currentUser) : IRequestHandler<UpdateEventCommand>
+    EventManager eventManager) : IRequestHandler<UpdateEventCommand>
 {
-    public Task Handle(UpdateEventCommand request, CancellationToken cancellationToken)
+    public async Task Handle(UpdateEventCommand request, CancellationToken cancellationToken)
     {
-        return Task.CompletedTask;
+        var eventEntity = await eventRepository.GetAsync(request.EventId);
+        await eventManager.ChangeNameAsync(eventEntity, request.Name);
+        var location = new Address(request.Street, request.District, request.City);
+        eventEntity.Location = location;
+        await eventManager.ChangeStartDateAsync(eventEntity, request.StartDate);
+        eventEntity.EndDate = request.EndDate;
+        //update image later
     }
 }
