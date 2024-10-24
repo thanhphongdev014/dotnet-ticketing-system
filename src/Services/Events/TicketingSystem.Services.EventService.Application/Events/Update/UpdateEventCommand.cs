@@ -37,6 +37,7 @@ public class UpdateEventCommandHandler(
         eventEntity.Location = location;
         await eventManager.ChangeStartDateAsync(eventEntity, request.StartDate);
         eventEntity.EndDate = request.EndDate;
+        await eventRepository.UpdateAsync(eventEntity, cancellationToken);
         //update image later
     }
 }
