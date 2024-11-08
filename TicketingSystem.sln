@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSystem.Services.Ev
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSystem.Services.EventService.Infrastructure", "src\Services\Events\TicketingSystem.Services.EventService.Infrastructure\TicketingSystem.Services.EventService.Infrastructure.csproj", "{F0DA2BBA-2B42-4D67-AE77-89A3DF366B06}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSystem.Services.EventService.Persistence", "src\Services\Events\TicketingSystem.Services.EventService.Persistence\TicketingSystem.Services.EventService.Persistence.csproj", "{25FEDBDE-DB8A-4A42-8887-C35884E8DBEE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{F0DA2BBA-2B42-4D67-AE77-89A3DF366B06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F0DA2BBA-2B42-4D67-AE77-89A3DF366B06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F0DA2BBA-2B42-4D67-AE77-89A3DF366B06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25FEDBDE-DB8A-4A42-8887-C35884E8DBEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25FEDBDE-DB8A-4A42-8887-C35884E8DBEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25FEDBDE-DB8A-4A42-8887-C35884E8DBEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25FEDBDE-DB8A-4A42-8887-C35884E8DBEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -100,6 +106,7 @@ Global
 		{51EDD858-3926-467D-B21D-8447FC9D74F6} = {1FDB228E-2EA7-47C9-96AA-6049E07C31F3}
 		{33458EE8-BCDD-4991-98E6-06B03D59C0C6} = {1FDB228E-2EA7-47C9-96AA-6049E07C31F3}
 		{F0DA2BBA-2B42-4D67-AE77-89A3DF366B06} = {1FDB228E-2EA7-47C9-96AA-6049E07C31F3}
+		{25FEDBDE-DB8A-4A42-8887-C35884E8DBEE} = {1FDB228E-2EA7-47C9-96AA-6049E07C31F3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0D30B876-A497-429F-9E0E-DA8424B035FE}
