@@ -31,7 +31,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSystem.Services.Ev
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSystem.Services.EventService.Application", "src\Services\Events\TicketingSystem.Services.EventService.Application\TicketingSystem.Services.EventService.Application.csproj", "{51EDD858-3926-467D-B21D-8447FC9D74F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSystem.Services.EvemtService.Api", "src\Services\Events\TicketingSystem.Services.EvemtService.Api\TicketingSystem.Services.EvemtService.Api.csproj", "{33458EE8-BCDD-4991-98E6-06B03D59C0C6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSystem.Services.EventService.Api", "src\Services\Events\TicketingSystem.Services.EventService.Api\TicketingSystem.Services.EventService.Api.csproj", "{33458EE8-BCDD-4991-98E6-06B03D59C0C6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSystem.Services.EventService.Infrastructure", "src\Services\Events\TicketingSystem.Services.EventService.Infrastructure\TicketingSystem.Services.EventService.Infrastructure.csproj", "{F0DA2BBA-2B42-4D67-AE77-89A3DF366B06}"
 EndProject

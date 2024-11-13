@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\BuildingBlocks\TicketingSystem.Persistence\TicketingSystem.Persistence.csproj" />
+    </ItemGroup>
+
 </Project>
